@@ -1,7 +1,21 @@
+
+
+<div class='container'>
 <h1>These are your links!</h1>
-
 <%= link_to "Log out", logout_path, method: :DELETE %>
+  <h1>Add Link</h1>
+  <div id="create-form">
+    <label id="title-field">Title
+      <input type="text" id="link-title" name="link-title" placeholder="Title of Link">
+      <div class="validation-error"></div>
+    </label>
+    <label id="url-field">URL
+      <input type="text" id="link-url" name="link-url" placeholder="What's the URL?">
+      <div class="validation-error"></div>
+    </label>
+    <button id="create-link">Add Link</button>
+  </div>
+  <div id='all-links'>
 
-<div id='all-links'>
-
+  </div>
 </div>

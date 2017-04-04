@@ -6,6 +6,7 @@ class Api::V1::LinksController < ApplicationController
 
   def create
     link = JSON.parse(request.body.read)
+    puts "This is the Link: #{link}"
     new_link = Link.create(title: link['title'], url: link['url'])
     render json: new_link
   end
