@@ -6,10 +6,7 @@ The link to heroku can be followed by clicking [here](https://urlockbox-drew.her
 
 It really is not worth visiting at this time. I have some issues to work out. They are as follows:
 
-1) I have a problem with the asset pipeline. The app looks and works well on localhost, but once pushing master branch up to heroku, my styling and javascripts are not working. 
-
-![alt tag](http://imgur.com/KiFmHwE)
-[Imgur](http://i.imgur.com/KiFmHwE.png)
+1) I have a problem with the asset pipeline. The app looks and works well on localhost, but once pushing master branch up to heroku, my styling and javascripts are not working. Locally Looks like [this](http://i.imgur.com/KiFmHwE.png)
 
 2) I have features built that I KNOW work locally. I have selenium tests written for them, but again, they won't work. I need advice/guidance/more time to fix these tests.
 
