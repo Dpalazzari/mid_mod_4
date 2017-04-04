@@ -7,7 +7,5 @@ class CreateLinks < ActiveRecord::Migration
 
       t.timestamps
     end
-
-    add_reference :links, :user, index: true
   end
 end
