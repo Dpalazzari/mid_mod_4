@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Link.delete_all
+Link.create(url: "https://www.google.com", title: "Google")
+Link.create(url: "https://www.nerd-bay.herokuapp.com", title: "Nerd Bay")
+Link.create(url: "https://www.espn.com", title: "ESPN")
+Link.create(url: "https://www.reddit.com", title: "Reddit")
