@@ -1,11 +1,6 @@
-$( document ).ready(function(){
-  loadWebsites()
-  $("body").on("click", ".mark-as-read", markAsRead)
-})
-
 function loadWebsites(){
   $.ajax({
-    url: 'https://urlockbox-drew.herokuapp.com/api/v1/links',
+    url: '/api/v1/links',
     method: 'GET'
   }).done(function(links){
     if(!links.length == 0){
@@ -45,7 +40,7 @@ function markAsRead(e) {
 
   $.ajax({
     type: "PATCH",
-    url: "https://urlockbox-drew.herokuapp.com/api/v1/links/" + linkId,
+    url: "/api/v1/links/" + linkId,
     data: { read: true },
   }).then(updateLinkStatus)
     .fail(displayFailure);
@@ -83,3 +78,8 @@ function updateNewLinkStatus(link){
 function displayFailure(failureData){
   console.log("FAILED attempt to update Link: " + failureData.responseText);
 }
+
+$( document ).ready(function(){
+  loadWebsites()
+  $("body").on("click", ".mark-as-read", markAsRead)
+})
