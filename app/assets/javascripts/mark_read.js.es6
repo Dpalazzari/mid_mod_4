@@ -4,7 +4,14 @@ $( document ).ready(function(){
 })
 
 function loadReadWebsites(){
-
+  $.ajax({
+    url: '/api/v1/links',
+    method: 'GET'
+  }).done(function(response){
+    debugger;
+  }).fail(function(error){
+    console.log(error)
+  })
 }
 
 function markAsRead(e) {
