@@ -8,6 +8,8 @@ It really is not worth visiting at this time. I have some issues to work out. Th
 
 1) I have a problem with the asset pipeline. The app looks and works well on localhost, but once pushing master branch up to heroku, my styling and javascripts are not working. 
 
+[Imgur](http://i.imgur.com/KiFmHwE.png)
+
 2) I have features built that I KNOW work locally. I have selenium tests written for them, but again, they won't work. I need advice/guidance/more time to fix these tests.
 
 3) Inconsistency with the 'Mark as Read' and 'Mark as Unread' buttons. The funcitonality is there; but the buttons don't work as well as they should. See the temporary work around *
