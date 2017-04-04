@@ -26,7 +26,7 @@ rails s
 
 Boot up localhost:3000, login, visit the root path ('/') and the user can view all links provided by the internal API, as well as mark them as read/unread, and create new links via an ajax request.
 
-Latest implementation: Logged in user cna filter the links by name. Soon to come: Filter links be read status.
+Latest implementation: Logged in user can filter the links by name. Soon to come: Filter links by read status.
 
 ***If you are having trouble with the 'Mark as Read' and 'Mark as Unread' buttons, click somewhere else on the page between clicks and the buttons will work as intended. 
 
