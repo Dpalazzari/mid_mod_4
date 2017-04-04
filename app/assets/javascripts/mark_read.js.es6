@@ -5,7 +5,7 @@ $( document ).ready(function(){
 
 function loadWebsites(){
   $.ajax({
-    url: '/api/v1/links',
+    url: 'https://urlockbox-drew.herokuapp.com/api/v1/links',
     method: 'GET'
   }).done(function(links){
     if(!links.length == 0){
@@ -45,7 +45,7 @@ function markAsRead(e) {
 
   $.ajax({
     type: "PATCH",
-    url: "/api/v1/links/" + linkId,
+    url: "https://urlockbox-drew.herokuapp.com/api/v1/links/" + linkId,
     data: { read: true },
   }).then(updateLinkStatus)
     .fail(displayFailure);
