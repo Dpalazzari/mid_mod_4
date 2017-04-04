@@ -1,5 +1,30 @@
 # URLockBox
 
+### Developer Notes
+
+The link to heroku can be followed by clicking [here](https://urlockbox-drew.herokuapp.com/users/new)
+
+It really is not worth visiting at this time. I have some issues to work out. They are as follows:
+
+1) I have a problem with the asset pipeline. The app looks and works well on localhost, but once pushing master branch up to heroku, my styling and javascripts are not working. 
+
+2) I have features built that I KNOW work locally. I have selenium tests written for them, but again, they won't work. I need advice/guidance/more time to fix these tests.
+
+If you do want to see what I have locally:
+
+From the command line:
+
+```
+git clone git@github.com:Dpalazzari/mid_mod_4.git
+cd mid_mod_4
+bundle
+rake db:{create,migrate,seed,test:prepare}
+rails s
+```
+
+Boot up localhost:3000, and login and the user can view all links from the internal API, as well as mark them as read/unread, and create new links via an ajax request. 
+
+
 ## MidModule Assessment
 
 The URLockbox is a starter app for the mid-module assessment for backend engineering module4 at TuringSchool of Software and Design.
@@ -26,26 +51,4 @@ If you're having problems troubleshooting asynchronous actions (like DOM changes
 
 It is highly suggested that you also check out the Capybara docs and and the section on [selenium-webdriver](https://github.com/teamcapybara/capybara#selenium).
 
-### Developer Notes
 
-The link to heroku can be followed by clicking [here](https://urlockbox-drew.herokuapp.com/users/new)
-
-It really is not worth visiting at this time. I have some issues to work out. They are as follows:
-
-1) I have a problem with the asset pipeline. The app looks and works well on localhost, but once pushing master branch up to heroku, my styling and javascripts are not working. 
-
-2) I have features built that I KNOW work locally. I have selenium tests written for them, but again, they won't work. I need advice/guidance/more time to fix these tests.
-
-If you do want to see what I have locally:
-
-From the command line:
-
-```
-git clone git@github.com:Dpalazzari/mid_mod_4.git
-cd mid_mod_4
-bundle
-rake db:{create,migrate,seed,test:prepare}
-rails s
-```
-
-Boot up localhost:3000, and login and the user can view all links from the internal API, as well as mark them as read/unread, and create new links via an ajax request. 
