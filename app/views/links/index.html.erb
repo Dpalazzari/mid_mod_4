@@ -1,13 +1,5 @@
 <h1>These are your links!</h1>
 
 <div id='all-links'>
-<% @links.each do |link| %>
-      <div class="link">
-        <li>Title: <%= link.title %></li>
-        <li>URL: <%= link_to link.url %></li>
-        <input type="hidden" name="<%= link.id %>" id="link-id">
-        <li class="read-status">Read? <%= link.read %></li>
-        <button class='mark-as-read'>Mark as Read</button>
-      </div>
-<% end %>
+
 </div>

@@ -7,11 +7,23 @@ function loadReadWebsites(){
   $.ajax({
     url: '/api/v1/links',
     method: 'GET'
-  }).done(function(response){
-    debugger;
+  }).done(function(links){
+    if(!links.length == 0){
+    links.forEach(function(element){
+      formatLinkTable(element)
+    })
+    }
   }).fail(function(error){
     console.log(error)
   })
+}
+
+function formatLinkTable(link){
+  $('#all-links').prepend("<div class='link'><li>Title: " + link.title +
+    "</li><li>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" + 
+    link.id +" id='link-id'>" + "<li class='read-status'>Read? " + link.read + 
+    "</li><button class='mark-as-read'>Mark as Read</button>" +
+    "</div>")
 }
 
 function markAsRead(e) {
