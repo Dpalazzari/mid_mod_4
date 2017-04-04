@@ -10,6 +10,8 @@ It really is not worth visiting at this time. I have some issues to work out. Th
 
 2) I have features built that I KNOW work locally. I have selenium tests written for them, but again, they won't work. I need advice/guidance/more time to fix these tests.
 
+3) Inconsistency with the 'Mark as Read' and 'Mark as Unread' buttons. The funcitonality is there; but the buttons don't work as well as they should. See the temporary work around *
+
 If you do want to see what I have locally:
 
 From the command line:
@@ -22,7 +24,9 @@ rake db:{create,migrate,seed,test:prepare}
 rails s
 ```
 
-Boot up localhost:3000, and login and the user can view all links from the internal API, as well as mark them as read/unread, and create new links via an ajax request. 
+Boot up localhost:3000, login, visit the root path ('/') and the user can view all links provided by the internal API, as well as mark them as read/unread, and create new links via an ajax request.
+
+***If you are having trouble with the 'Mark as Read' and 'Mark as Unread' buttons, click somewhere else on the page between clicks and the buttons will work as intended. 
 
 
 ## MidModule Assessment
