@@ -1,15 +1,19 @@
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<p>Already signed up? <%= link_to "Login", login_path %> here.</p>
 
-  <%= f.label :email %>
-  <%= f.text_field :email%>
+<div class='container'>
+  <%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+    <%= f.label :email %>
+    <%= f.text_field :email%>
 
-  <%= f.label 'Confirm Password' %>
-  <%= f.password_field :password_confirmation %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.label 'Confirm Password' %>
+    <%= f.password_field :password_confirmation %>
+
+    <%= f.submit %>
+  <% end %>
+</div>
