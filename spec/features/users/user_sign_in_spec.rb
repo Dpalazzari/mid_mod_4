@@ -20,4 +20,14 @@ RSpec.feature "User log in" do
     expect(current_path).to eq(root_path)
     expect(page).to have_content("Logged in as #{@user.name}.")
   end
+
+  it "can log out" do
+    page.set_rack_session(user_id: @user.id)
+
+    visit root_path
+    
+    click_on "Log out"
+    expect(page).to have_content("Successfully logged out.")
+    expect(current_path).to eq(login_path)
+  end
 end
