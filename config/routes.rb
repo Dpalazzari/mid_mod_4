@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root to: "links#index"
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
 
   resources :users, only: [:new, :create]
 
