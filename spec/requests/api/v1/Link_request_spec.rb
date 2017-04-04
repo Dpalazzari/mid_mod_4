@@ -19,4 +19,21 @@ describe 'Link Request', type: :request do
       expect(link['url']).to eq(link1.url)
     end
   end
+
+  describe 'Post /api/v1/links' do
+    it 'returns JSON of the newly created link' do
+      Link.create(url: "https://www.espn.com", title: "ESPN")
+      Link.create(url: "https://www.reddit.com", title: "Reddit")
+      expect(Link.all.count).to eq(2)
+
+      new_link = {'title': 'Turing', 'url': 'https://turing.io'}
+      
+      post '/api/v1/links', new_link.to_json
+
+      raw_link = JSON.parse(response.body)
+      expect(raw_link).to have_key('title')
+      expect(raw_link).to have_key('url')
+      expect(Link.all.count).to eq(3)
+    end
+  end
 end

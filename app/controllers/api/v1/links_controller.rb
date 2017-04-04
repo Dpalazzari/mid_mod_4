@@ -4,6 +4,12 @@ class Api::V1::LinksController < ApplicationController
     render json: Link.all
   end
 
+  def create
+    link = JSON.parse(request.body.read)
+    new_link = Link.create(title: link['title'], url: link['url'])
+    render json: new_link
+  end
+
   def update
     @link = Link.find(params[:id])
     if @link.update_attributes(link_params)
