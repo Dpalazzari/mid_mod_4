@@ -250,7 +250,6 @@ DEPENDENCIES
   jquery-rails
   launchy
   pg
-  pry
   pry-state
   rack_session_access
   rails (~> 5.0.0, >= 5.0.0.1)

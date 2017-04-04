@@ -29,7 +29,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'pry'
   gem 'simplecov', :require => false
   gem 'spring'
   gem 'database_cleaner'
