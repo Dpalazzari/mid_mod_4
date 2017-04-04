@@ -1,16 +1,20 @@
 $( document ).ready(function(){
-  loadReadWebsites()
+  loadWebsites()
   $("body").on("click", ".mark-as-read", markAsRead)
 })
 
-function loadReadWebsites(){
+function loadWebsites(){
   $.ajax({
     url: '/api/v1/links',
     method: 'GET'
   }).done(function(links){
     if(!links.length == 0){
     links.forEach(function(element){
-      formatLinkTable(element)
+      if(element.read === true){
+        formatReadLinkTable(element)        
+      } else if(element.read === false){
+        formatLinkTable(element)
+      }
     })
     }
   }).fail(function(error){
@@ -23,6 +27,14 @@ function formatLinkTable(link){
     "</li><li>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" + 
     link.id +" id='link-id'>" + "<li class='read-status'>Read? " + link.read + 
     "</li><button class='mark-as-read'>Mark as Read</button>" +
+    "</div>")
+}
+
+function formatReadLinkTable(link){
+  $('#all-links').prepend("<div class='link readLinks'><li>Title: " + link.title +
+    "</li><li>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" + 
+    link.id +" id='link-id'>" + "<li class='read-status'>Read? " + link.read + 
+    "</li><button class='mark-as-read unread'>Mark as Unread</button>" +
     "</div>")
 }
 
