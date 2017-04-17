@@ -18,18 +18,18 @@ function loadWebsites(){
 }
 
 function formatLinkTable(link){
-  $('#all-links').prepend("<div class='link'><li>Title: " + link.title +
-    "</li><li class='linkUrl'>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
+  $('#all-links').prepend("<div class='link unreadLinks'><li class='specificTitle'>Title: " + link.title +
+    "</li><li class='specificUrl'>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
     link.id +" id='link-id'>" + "<li class='read-status'>Read? " + link.read +
-    "</li><button class='mark-as-read'>Mark as Read</button>" +
+    "</li><button class='mark-as-read'>Mark as Read</button><button class='edit-button'>Edit</button>" +
     "</div>")
 }
 
 function formatReadLinkTable(link){
-  $('#all-links').prepend("<div class='link readLinks'><li>Title: " + link.title +
-    "</li><li class='linkUrl'>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
+  $('#all-links').prepend("<div class='link readLinks'><li class='specificTitle'>Title: " + link.title +
+    "</li><li class='specificUrl'>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
     link.id +" id='link-id'>" + "<li class='read-status'>Read? " + link.read +
-    "</li><button class='unread'>Mark as Unread</button>" +
+    "</li><button class='unread'>Mark as Unread</button><button class='edit-button'>Edit</button>" +
     "</div>")
 }
 
@@ -55,7 +55,7 @@ function updateHotReads(string){
     method: 'POST',
     data: JSON.stringify(stringData)
   }).done(function(link){
-    // debugger;
+    console.log(link)
   }).fail(function(error){
     console.log(error)
   })
@@ -63,7 +63,7 @@ function updateHotReads(string){
 
 function updateLinkStatus(link) {
   $(`.link input[name=${link.id}]`).siblings('.read-status').text(`Read? ${link.read}`);
-  $(`.link input[name=${link.id}]`).parent('.link').addClass('readLinks');
+  $(`.link input[name=${link.id}]`).parent('.link').addClass('readLinks').removeClass('unreadLinks');
   $(`.link input[name=${link.id}]`).parent('.link').children('.mark-as-read').text('Mark as Unread').addClass('unread').removeClass('mark-as-read')
 }
 
@@ -81,7 +81,7 @@ function markAsUnread(e){
 
 function updateNewLinkStatus(link){
   $(`.link input[name=${link.id}]`).siblings('.read-status').text(`Read? ${link.read}`);
-  $(`.link input[name=${link.id}]`).parent('.link').removeClass('readLinks')
+  $(`.link input[name=${link.id}]`).parent('.link').removeClass('readLinks').addClass('unreadLinks')
   $(`.link input[name=${link.id}]`).siblings('.unread').text('Mark as Read').removeClass('unread').addClass("mark-as-read")
 }
 
