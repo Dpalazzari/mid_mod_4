@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
 
   context 'validations' do
     it 'is invalid without a name' do
-      user = User.new(password: 'blah')
+      user = User.new(password: 'blah', password_confirmation: 'password',)
       expect(user).to be_invalid
     end
 
@@ -17,14 +17,14 @@ RSpec.describe User, type: :model do
     end
 
     it 'is valid with name and password' do
-      user = User.new(name: 'Babooshka', password: 'password', email: 'bab@ooshka.com')
+      user = User.new(name: 'Babooshka', password: 'password', password_confirmation: 'password', email: 'bab@ooshka.com')
       expect(user).to be_valid
     end
 
     it 'is invlaid without a unique email' do
-      user  = User.create(name: 'Bilbo', password: 'password', email: 'bab@ooshka.com')
-      user2 = User.create(name: 'Babooshka', password: 'password', email: 'bab@ooshka.com')
-      
+      user  = User.create(name: 'Bilbo', password: 'password', password_confirmation: 'password', email: 'bab@ooshka.com')
+      user2 = User.create(name: 'Babooshka', password: 'password', password_confirmation: 'password', email: 'bab@ooshka.com')
+
       expect(user2).to be_invalid
     end
   end
