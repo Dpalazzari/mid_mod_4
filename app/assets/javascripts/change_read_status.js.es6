@@ -19,7 +19,7 @@ function loadWebsites(){
 
 function formatLinkTable(link){
   $('#all-links').prepend("<div class='link'><li>Title: " + link.title +
-    "</li><li>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
+    "</li><li class='linkUrl'>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
     link.id +" id='link-id'>" + "<li class='read-status'>Read? " + link.read +
     "</li><button class='mark-as-read'>Mark as Read</button>" +
     "</div>")
@@ -27,7 +27,7 @@ function formatLinkTable(link){
 
 function formatReadLinkTable(link){
   $('#all-links').prepend("<div class='link readLinks'><li>Title: " + link.title +
-    "</li><li>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
+    "</li><li class='linkUrl'>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
     link.id +" id='link-id'>" + "<li class='read-status'>Read? " + link.read +
     "</li><button class='unread'>Mark as Unread</button>" +
     "</div>")
@@ -37,12 +37,28 @@ function markAsRead(e) {
   e.preventDefault();
   var $link = $(this).parents('.link');
   var linkId = $link.children('#link-id')[0].name
+  var urlString = $(this).siblings('.linkUrl').text()
+  updateHotReads(urlString);
   $.ajax({
     type: "PATCH",
     url: "/api/v1/links/" + linkId,
     data: { read: true },
   }).then(updateLinkStatus)
     .fail(displayFailure);
+}
+
+function updateHotReads(string){
+  var urlString = string.slice(5)
+  var stringData = { 'url': urlString}
+  $.ajax({
+    url: 'https://drews-hot-reads.herokuapp.com/api/v1/links',
+    method: 'POST',
+    data: JSON.stringify(stringData)
+  }).done(function(link){
+    // debugger;
+  }).fail(function(error){
+    console.log(error)
+  })
 }
 
 function updateLinkStatus(link) {

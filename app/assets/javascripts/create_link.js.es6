@@ -42,7 +42,7 @@ function validLink(title, url){
 
 function appendLink(link){
   $('#all-links').prepend("<div class='link'><li>Title: " + link.title +
-    "</li><li>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
+    "</li><li class='linkUrl'>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
     link.id +" id='link-id'>" + "<li class='read-status'>Read? " + link.read +
     "</li><button class='mark-as-read'>Mark as Read</button>" +
     "</div>")
