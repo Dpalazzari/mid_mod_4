@@ -89,8 +89,29 @@ function displayFailure(failureData){
   console.log("FAILED attempt to update Link: " + failureData.responseText);
 }
 
+function getTopTen(){
+  $.ajax({
+    url: "https://drews-hot-reads.herokuapp.com/api/v1/links/top_ten",
+    method: 'GET'
+  }).done(function(links){
+    links.forEach(function(link){
+      var currentLinks = $('#all-links').children('div').children('.specificUrl').children()
+      for(var i = currentLinks.length - 2; i > 0; i--){
+        var childUrl = currentLinks[i].firstChild.data
+        if(link.url == childUrl){
+          var targetLink = $('#all-links').children('div')[i].append("Hot Reads top ten!")
+          // If the childUrl is found within hot read's array of links, addClass to childUrl's parent element
+        }
+      }
+    })
+  }).fail(function(error){
+    console.log(error)
+  })
+}
+
 $( document ).ready(function(){
   loadWebsites()
+  getTopTen()
   $("body").on("click", ".mark-as-read", markAsRead)
   $("body").on("click", ".unread", markAsUnread)
 })
