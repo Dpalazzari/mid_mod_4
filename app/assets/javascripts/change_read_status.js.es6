@@ -37,12 +37,28 @@ function markAsRead(e) {
   e.preventDefault();
   var $link = $(this).parents('.link');
   var linkId = $link.children('#link-id')[0].name
+  var urlString = $(this).siblings('.linkUrl').text()
+  updateHotReads(urlString);
   $.ajax({
     type: "PATCH",
     url: "/api/v1/links/" + linkId,
     data: { read: true },
   }).then(updateLinkStatus)
     .fail(displayFailure);
+}
+
+function updateHotReads(string){
+  var urlString = string.slice(5)
+  var stringData = { 'url': urlString}
+  $.ajax({
+    url: 'https://drews-hot-reads.herokuapp.com/api/v1/links',
+    method: 'POST',
+    data: JSON.stringify(stringData)
+  }).done(function(link){
+    console.log(link)
+  }).fail(function(error){
+    console.log(error)
+  })
 }
 
 function updateLinkStatus(link) {
@@ -73,8 +89,28 @@ function displayFailure(failureData){
   console.log("FAILED attempt to update Link: " + failureData.responseText);
 }
 
+function getTopTen(){
+  $.ajax({
+    url: "https://drews-hot-reads.herokuapp.com/api/v1/links/top_ten",
+    method: 'GET'
+  }).done(function(links){
+    links.forEach(function(link){
+      var currentLinks = $('#all-links').children('div').children('.specificUrl').children()
+      for(var i = currentLinks.length - 2; i > 0; i--){
+        var childUrl = currentLinks[i].firstChild.data
+        if(link.url == childUrl){
+          var targetLink = $('#all-links').children('div')[i].append("Hot Reads top ten!")
+        }
+      }
+    })
+  }).fail(function(error){
+    console.log(error)
+  })
+}
+
 $( document ).ready(function(){
   loadWebsites()
+  getTopTen()
   $("body").on("click", ".mark-as-read", markAsRead)
   $("body").on("click", ".unread", markAsUnread)
 })
