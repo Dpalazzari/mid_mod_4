@@ -2,6 +2,9 @@
 <h1>These are your links!</h1>
 <%= link_to "Log out", logout_path, method: :DELETE %>
   <h1>Add Link</h1>
+  <p>
+    Links must have a valid url! i.e. 'https://www.example.com'
+  </p>
   <div id="create-form">
     <label id="title-field">Title
       <input type="text" id="link-title" name="link-title" placeholder="Title of Link">
