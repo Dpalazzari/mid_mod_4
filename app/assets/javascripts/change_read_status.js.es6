@@ -37,7 +37,7 @@ function markAsRead(e) {
   e.preventDefault();
   var $link = $(this).parents('.link');
   var linkId = $link.children('#link-id')[0].name
-  var urlString = $(this).siblings('.linkUrl').text()
+  var urlString = $(this).siblings('.specificUrl').text()
   updateHotReads(urlString);
   $.ajax({
     type: "PATCH",
