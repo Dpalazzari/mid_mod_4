@@ -8,10 +8,10 @@ describe "User creates Link", :type => :feature, :js => true do
 
     expect(Link.all.count).to eq(1)
     visit root_path
-    
-    fill_in "link-title", :with => "Twitch"
-    fill_in "link-url", :with => "https://www.twitch.tv"
-    click_link_or_button "create-link"
+
+    fill_in "link-title", with: "Twitch"
+    fill_in "link-url", with: "https://www.twitch.tv"
+    click_on "Add Link"
 
     expect(Link.all.count).to eq(2)
 

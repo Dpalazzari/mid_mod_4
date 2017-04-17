@@ -6,6 +6,11 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <% if current_user %>
+      <%= link_to 'Logout', logout_path, method: :DELETE %>
+    <% else %>
+      <%= link_to 'Sign-Up', new_user_path %>
+    <% end %>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
     <% end %>
