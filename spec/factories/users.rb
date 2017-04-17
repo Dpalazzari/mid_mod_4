@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    name { Faker::LeagueOfLegends.champion }
+    name { Faker::GameOfThrones.character }
     password "password"
     password_confirmation 'password'
     email 'coolguy@email'

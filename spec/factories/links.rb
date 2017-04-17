@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :link do
-    title "youtube"
-    url "https://www.youtube.com"
+    title { Faker::GameOfThrones.character }
+    url { Faker::Internet.url }
   end
 end
