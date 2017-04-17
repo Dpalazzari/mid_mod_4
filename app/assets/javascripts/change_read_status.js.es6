@@ -100,7 +100,6 @@ function getTopTen(){
         var childUrl = currentLinks[i].firstChild.data
         if(link.url == childUrl){
           var targetLink = $('#all-links').children('div')[i].append("Hot Reads top ten!")
-          // If the childUrl is found within hot read's array of links, addClass to childUrl's parent element
         }
       }
     })
