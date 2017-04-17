@@ -18,7 +18,7 @@ function loadWebsites(){
 }
 
 function formatLinkTable(link){
-  $('#all-links').prepend("<div class='link'><li>Title: " + link.title +
+  $('#all-links').prepend("<div class='link unreadLinks'><li>Title: " + link.title +
     "</li><li>URL: <a href=" + link.url + ">" + link.url +"</a></li> <input type='hidden' name=" +
     link.id +" id='link-id'>" + "<li class='read-status'>Read? " + link.read +
     "</li><button class='mark-as-read'>Mark as Read</button>" +
@@ -47,7 +47,7 @@ function markAsRead(e) {
 
 function updateLinkStatus(link) {
   $(`.link input[name=${link.id}]`).siblings('.read-status').text(`Read? ${link.read}`);
-  $(`.link input[name=${link.id}]`).parent('.link').addClass('readLinks');
+  $(`.link input[name=${link.id}]`).parent('.link').addClass('readLinks').removeClass('unreadLinks');
   $(`.link input[name=${link.id}]`).parent('.link').children('.mark-as-read').text('Mark as Unread').addClass('unread').removeClass('mark-as-read')
 }
 
@@ -65,7 +65,7 @@ function markAsUnread(e){
 
 function updateNewLinkStatus(link){
   $(`.link input[name=${link.id}]`).siblings('.read-status').text(`Read? ${link.read}`);
-  $(`.link input[name=${link.id}]`).parent('.link').removeClass('readLinks')
+  $(`.link input[name=${link.id}]`).parent('.link').removeClass('readLinks').addClass('unreadLinks')
   $(`.link input[name=${link.id}]`).siblings('.unread').text('Mark as Read').removeClass('unread').addClass("mark-as-read")
 }
 

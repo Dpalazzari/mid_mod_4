@@ -14,6 +14,18 @@ function filterRows(self, rows){
   });
 }
 
+function showRead(){
+  $('#all-links').children('.readLinks').show();
+  $('#all-links').children('.unreadLinks').hide();
+}
+
+function showUnread(){
+  $('#all-links').children('.readLinks').hide();
+  $('#all-links').children('.unreadLinks').show();
+}
+
 $(document).ready(function(){
   filterLinks();
+  $("body").on("click", "#show-read", showRead)
+  $("body").on("click", "#show-unread", showUnread)
 })
