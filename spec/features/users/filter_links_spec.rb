@@ -19,4 +19,12 @@ RSpec.describe "Can filter links", type: :feature, :js => :true do
       expect(page).to_not have_content("Turing")
     end
   end
+
+  scenario 'Filter the Turing link' do
+    fill_in "filter-link", with: 'tur'
+    within('#all-links') do
+      expect(page).to_not have_content("Youtube")
+      expect(page).to have_content("Turing")
+    end
+  end
 end
