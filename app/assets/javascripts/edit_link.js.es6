@@ -5,7 +5,6 @@ function editLink(){
   // var newTitle = $(this).siblings('.specificTitle').append("<input type='text' placeholder='New Title' />")
   // var newUrl   = $(this).siblings('.specificUrl').append("<input type='text' placeholder='New Url' />")
   // $(this).append("<button class='submitEdits'>Submit</button>")
-  debugger;
 }
 
 $(document).ready(function(){
